@@ -1,0 +1,45 @@
+<div data-role="header">
+  <h1>New Facility</h1>
+  <%= link_to 'Back', facilities_path, { "data-icon"  => "back", "class" => "ui-btn-left" } %> 
+</div>
+
+<div data-role="content">
+  <%= form_for :facility, :url => facilities_path, :method => :post do |f| %>
+    <div data-role="fieldcontain">
+      <%= f.label :Location %><br />
+      <%= f.text_field :Location__c %>
+    </div>  
+    <div data-role="fieldcontain">
+      <%= f.label 'Facility Name' %><br />
+      <%= f.text_field :Name %>
+    </div>
+    <div data-role="fieldcontain">
+      <%= f.label :Hours %><br />
+      <%= f.text_field :Hours__c %>
+    </div>
+    <div data-role="fieldcontain">
+      <%= f.label :Description %><br />
+      <%= f.text_area :Description__c %>
+    </div>
+    <div data-role="fieldcontain">
+      <%= f.label :Long %><br />
+      <%= f.text_field :Long__c %>
+    </div>
+    <div data-role="fieldcontain">
+      <%= f.label :Lat %><br />
+      <%= f.text_field :Lat__c %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+<script language="javascript">
+// get the user's current location if enabled
+navigator.geolocation.getCurrentPosition (function (pos)
+{
+  $("#facility_Lat__c").val(pos.coords.latitude);
+  $("#facility_Long__c").val(pos.coords.longitude);
+});
+</script>

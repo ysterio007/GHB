@@ -1,0 +1,18 @@
+<div data-role="header">
+  <h1><%= @facility.Name %></h1>
+  <%= link_to 'Back', facilities_path, { "data-icon"  => "back", "class" => "ui-btn-left" } %> 
+  <%= link_to 'Favorite', "/favorite/#{@facility.Id}", { "data-icon"  => "star", "class" => "ui-btn-right"}  %>
+</div>
+
+<div data-role="content" id="map_content">
+
+  <h3><%= @facility.Name %> - <%= @facility.Location__c %></h3>
+  <p><%= @facility.Hours__c %></p>
+  <p><%= @facility.Description__c %></p>
+
+  <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @facility.Lat__c %>,<%= @facility.Long__c %>&zoom=12&size=400x300&maptype=roadmap
+&markers=color:blue%7Clabel:S%7C<%= @facility.Lat__c %>,<%= @facility.Long__c %>&sensor=true">
+
+<a href="https://maps.google.com/maps?q=<%= @facility.Lat__c %>,<%= @facility.Long__c %>" data-role="button" data-icon="maps"> Open in Google Maps </a>
+
+</div>

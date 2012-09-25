@@ -1,0 +1,20 @@
+<script type="text/javascript">
+var fav = new Object();
+fav.Id = "<%= @facility.Id %>";
+fav.Name = "<%= @facility.Name %>";
+fav.Location__c = "<%= @facility.Location__c %>";
+addFav(fav);
+</script>
+
+<div data-role="header">
+  <h1>Added Favorite</h1>
+  <%= link_to 'Back', facilities_path, { "data-icon"  => "back", "class" => "ui-btn-left" } %> 
+</div>
+
+<div data-role="content" id="map_content">
+
+  <h3>Added <%= @facility.Name %> to your list of favorite facilities.</h3>
+
+	<%= link_to "View #{@facility.Name}", facility_path(@facility), { "data-role" => "button", "data-icon"  => "gear" } %> 
+
+</div>
